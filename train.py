@@ -1,11 +1,5 @@
 import os
 import torch
-
-os.environ["CUDA_VISIBLE_DEVICES"] = '1'
-USE_CUDA = torch.cuda.is_available()
-device = torch.device("cuda" if USE_CUDA else "cpu")
-print(device)
-
 import yaml
 import argparse
 from core.dataset import MMDataLoader
@@ -16,14 +10,19 @@ from models.lnln import build_model
 from core.metric import MetricsTop 
 
 
+# os.environ["CUDA_VISIBLE_DEVICES"] = '1'
+USE_CUDA = torch.cuda.is_available()
+device = torch.device("cuda" if USE_CUDA else "cpu")
+print(device)
+
+parser = argparse.ArgumentParser() 
+parser.add_argument('--config_file', type=str, default='') 
+parser.add_argument('--seed', type=int, default=-1) 
+opt = parser.parse_args()
+print(opt)
+
 def main():
     best_valid_results, best_test_results = {}, {}
-
-    parser = argparse.ArgumentParser() 
-    parser.add_argument('--config_file', type=str, default='') 
-    parser.add_argument('--seed', type=int, default=-1) 
-    opt = parser.parse_args()
-    print(opt)
 
     config_file = 'configs/train_sims.yaml' if opt.config_file == '' else opt.config_file
 

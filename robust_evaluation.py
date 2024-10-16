@@ -2,48 +2,21 @@ import os
 import torch
 import yaml
 import argparse
+from core.dataset import MMDataEvaluationLoader
+from models.lnln import build_model
+from core.metric import MetricsTop
+
 
 os.environ["CUDA_VISIBLE_DEVICES"] = '2'
 USE_CUDA = torch.cuda.is_available()
 device = torch.device("cuda" if USE_CUDA else "cpu")
 print(device)
 
-from core.dataset import MMDataEvaluationLoader
-from models.lnln import build_model
-from core.metric import MetricsTop
-
-
 parser = argparse.ArgumentParser() 
 parser.add_argument('--config_file', type=str, default='') 
 parser.add_argument('--key_eval', type=str, default='') 
 opt = parser.parse_args()
 print(opt)
-
-
-def load_matched_weights(model, state_dict):
-    """
-    加载与当前模型层参数形状匹配的权重。
-    
-    参数:
-        model (torch.nn.Module): 目标模型实例。
-        state_dict (dict): 包含预训练权重的状态字典。
-        
-    返回:
-        无
-    """
-    own_state = model.state_dict()
-    for name, param in state_dict.items():
-        if name in own_state:
-            if isinstance(param, torch.nn.Parameter):
-                # 如果是Parameter，则获取其数据
-                param = param.data
-            if param.size() == own_state[name].size():
-                # 只有当尺寸相同时才进行复制
-                own_state[name].copy_(param)
-            else:
-                print(f"警告: 跳过参数 {name}，因为尺寸不匹配（需要 {own_state[name].size()}, 得到 {param.size()}）")
-        else:
-            print(f"警告: 跳过参数 {name}，因为它不在当前模型中")
 
 
 def main():
