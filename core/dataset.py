@@ -52,7 +52,6 @@ class MMDataset(Dataset):
         self.vision_lengths = data[self.mode]['vision_lengths']
         self.audio[self.audio == -np.inf] = 0
 
-        # if self.args.data_missing:
         if self.mode == 'train':
             missing_rate = [np.random.uniform(size=(len(data[self.mode][self.train_mode+'_labels']), 1)) for i in range(3)]
             
@@ -116,8 +115,6 @@ class MMDataset(Dataset):
         return len(self.labels['M'])
 
     def __getitem__(self, index):
-        # if self.args.data_missing:
-
         if (self.mode == 'train') and (index == 0):
             # missing_rate = [np.random.uniform(0, 0.5, size=(len(self.data[self.mode][self.train_mode+'_labels']), 1)) for i in range(3)]
             missing_rate = [np.random.uniform(size=(len(self.data[self.mode][self.train_mode+'_labels']), 1)) for i in range(3)]

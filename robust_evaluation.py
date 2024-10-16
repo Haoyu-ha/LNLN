@@ -39,7 +39,6 @@ def main():
             for _, cur_seed  in enumerate([1111, 1112, 1113]):
                 best_ckpt = os.path.join(f'ckpt/{dataset_name}/best_{key_eval}_{cur_seed}.pth')
                 model.load_state_dict(torch.load(best_ckpt)['state_dict'])
-                # load_matched_weights(model, torch.load(best_ckpt)['state_dict'])
                 args['base']['missing_rate_eval_test'] = cur_r # Set missing rate
 
                 dataLoader = MMDataEvaluationLoader(args)

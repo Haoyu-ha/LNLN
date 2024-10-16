@@ -67,56 +67,6 @@ def main():
 
         scheduler_warmup.step()
 
-        # if epoch == 1:
-        #     for key, value in test_results.items():
-        #         best_test_results[key] = value
-        # else:
-        #     for key, value in test_results.items():
-        #         if (key == 'Has0_F1_score') and (value + test_results['Has0_acc_2'] > best_test_results[key] + best_test_results['Has0_acc_2']):
-        #             best_test_results[key] = value
-        #             best_test_results['Has0_acc_2'] = test_results['Has0_acc_2']
-
-        #             key_eval = 'Has0_acc_2'
-        #             ckpt_path = os.path.join(ckpt_root, f'best_{key_eval}_{seed}.pth')
-        #             save_model(ckpt_path, epoch, model, optimizer)
-                
-        #         elif (key =='Non0_F1_score') and (value + test_results['Non0_acc_2'] > best_test_results[key] + best_test_results['Non0_acc_2']):
-        #             best_test_results[key] = value
-        #             best_test_results['Non0_acc_2'] = test_results['Non0_acc_2']
-
-        #             key_eval = 'Non0_acc_2'
-        #             ckpt_path = os.path.join(ckpt_root, f'best_{key_eval}_{seed}.pth')
-        #             save_model(ckpt_path, epoch, model, optimizer)
-                
-        #         elif key == 'MAE' and value > best_test_results[key]:
-        #             best_test_results[key] = value
-        #             best_test_results['Corr'] = test_results['Corr']
-
-        #             key_eval = 'MAE'
-        #             ckpt_path = os.path.join(ckpt_root, f'best_{key_eval}_{seed}.pth')
-        #             save_model(ckpt_path, epoch, model, optimizer)
-
-        #         elif key == 'F1_score' and (value + test_results['Mult_acc_2'] > best_test_results[key] + best_test_results['Mult_acc_2']):
-        #             best_test_results[key] = value
-        #             best_test_results['Mult_acc_2'] = test_results['Mult_acc_2']
-
-        #             key_eval = 'Mult_acc_2'
-        #             ckpt_path = os.path.join(ckpt_root, f'best_{key_eval}_{seed}.pth')
-        #             save_model(ckpt_path, epoch, model, optimizer)
-
-        #         elif key == 'Mult_acc_3' or key == 'Mult_acc_5' or key == 'Mult_acc_7':
-        #             best_test_results[key] = value
-
-        #             key_eval = key
-        #             ckpt_path = os.path.join(ckpt_root, f'best_{key_eval}_{seed}.pth')
-        #             save_model(ckpt_path, epoch, model, optimizer)
-                
-        #         else:
-        #             assert False, f'Unknown metrics: {key}'
-        
-        # print(f'Current Best Test Results: {best_test_results}\n')
-
-
 
 def train(model, train_loader, optimizer, loss_fn, epoch, metrics):
     y_pred, y_true = [], []
@@ -146,19 +96,9 @@ def train(model, train_loader, optimizer, loss_fn, epoch, metrics):
         if cur_iter == 0:
             for key, value in loss.items():
                 loss_dict[key] = value.item()
-            # loss_dict['loss'] = loss['loss'].item()
-            # loss_dict['l_cc'] = loss['l_cc'].item()
-            # loss_dict['l_adv'] = loss['l_adv'].item()
-            # loss_dict['l_rec'] = loss['l_rec'].item()
-            # loss_dict['l_sp'] = loss['l_sp'].item()
         else:
             for key, value in loss.items():
                 loss_dict[key] += value.item()
-            # loss_dict['loss'] += loss['loss'].item()
-            # loss_dict['l_cc'] += loss['l_cc'].item()
-            # loss_dict['l_adv'] += loss['l_adv'].item()
-            # loss_dict['l_rec'] += loss['l_rec'].item()
-            # loss_dict['l_sp'] += loss['l_sp'].item()
 
     pred, true = torch.cat(y_pred), torch.cat(y_true)
     results = metrics(pred, true)
