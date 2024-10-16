@@ -1,0 +1,86 @@
+base:
+  seed: 1111
+  lr: 0.0001
+  weight_decay: 0.0001
+  batch_size: 64
+  n_epochs: 200
+  num_workers: 8
+  alpha: 0.9
+  beta: 0.8
+  gamma: 0.1
+  sigma: 1.0
+  train_mode: regression # only support regression now
+  missing_rate_eval_test: 0.5   # used for evaluation and testing
+  do_validation: true
+
+
+dataset:
+  datasetName: mosei
+  dataPath: /mnt/data1/zhanghaoyu/Datasets/MSA_Datasets/MOSEI/Processed/unaligned_50.pkl
+   
+
+model:    
+  feature_extractor:
+    bert_pretrained: 'bert-base-uncased'
+    input_length: [50, 500, 500] # language, video, audio
+    token_length: [8, 8, 8] # language, video, audio
+    heads: 8
+    input_dims: [768, 35, 74] # language, video, audio
+    hidden_dims: [128, 128, 128] # language, video, audio
+    depth: 2
+
+  dmc:
+    proxy_dominant_feature_generator:
+      input_length: 24
+      token_length: 8
+      depth: 2
+      heads: 8
+      input_dim: 128
+      hidden_dim: 128
+
+    effectiveness_discriminator:
+      input_dim: 128
+      hidden_dim: 64
+      out_dim: 2
+
+    completeness_check:
+      input_length: 8
+      token_length: 1
+      depth: 2
+      heads: 8
+      input_dim: 128
+      hidden_dim: 128
+
+  reconstructor:
+    input_length: 8
+    depth: 2
+    heads: 8
+    input_dim: 128
+    hidden_dim: 128
+      
+  dmml:
+    language_encoder:
+      input_length: 8
+      token_length: 8
+      depth: 2
+      heads: 8
+      input_dim: 128
+      hidden_dim: 128
+
+    hyper_modality_learning:
+      depth: 3
+      heads: 8
+      input_dim: 128
+      hidden_dim: 128
+    
+    fuison_transformer:
+      source_length: 8
+      tgt_length: 8
+      depth: 4
+      heads: 8
+      input_dim: 128
+      hidden_dim: 128
+    
+    regression:
+      input_dim: 128
+      out_dim: 1
