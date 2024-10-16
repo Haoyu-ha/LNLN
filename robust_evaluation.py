@@ -7,7 +7,7 @@ from models.lnln import build_model
 from core.metric import MetricsTop
 
 
-os.environ["CUDA_VISIBLE_DEVICES"] = '2'
+# os.environ["CUDA_VISIBLE_DEVICES"] = '2'
 USE_CUDA = torch.cuda.is_available()
 device = torch.device("cuda" if USE_CUDA else "cpu")
 print(device)
