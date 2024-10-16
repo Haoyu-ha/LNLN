@@ -3,14 +3,19 @@
 Pytorch implementation of paper: 
 > **[Towards Robust Multimodal Sentiment Analysis with Incomplete Data](https://arxiv.org/abs/2409.20012)**
 
-> This is a reorganized code, if you find any bugs please contact me. Thanks.
 
 ## Content
+- [Acknowledgments](#Acknowledgments)
 - [Data Preparation](#Data-preparation)
 - [Environment](#Environment)
 - [Training](#Training)
 - [Evaluation](#Evaluation)
 - [Citation](#Citation)
+
+## Acknowledgments
+> This work builds upon our previous works [ALMT](https://github.com/Haoyu-ha/ALMT), which was published in the proceedings of EMNLP 2023.
+
+> This is a reorganized code, if you find any bugs please contact me. Thanks.
 
 ## Data Preparation
 MOSI/MOSEI/CH-SIMS Download: Please see [MMSA](https://github.com/thuiar/MMSA)
