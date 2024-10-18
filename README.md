@@ -3,6 +3,7 @@
 Pytorch implementation of paper: 
 > **[Towards Robust Multimodal Sentiment Analysis with Incomplete Data](https://arxiv.org/abs/2409.20012)**
 
+> This is a reorganized code, if you find any bugs please contact me. Thanks.
 
 ## Content
 - [Acknowledgments](#Acknowledgments)
@@ -12,10 +13,8 @@ Pytorch implementation of paper:
 - [Evaluation](#Evaluation)
 - [Citation](#Citation)
 
-## Acknowledgments
-> This work builds upon our previous works [ALMT](https://github.com/Haoyu-ha/ALMT), which was published in the proceedings of EMNLP 2023.
-
-> This is a reorganized code, if you find any bugs please contact me. Thanks.
+## Note
+> This work builds upon our previous works [ALMT](https://github.com/Haoyu-ha/ALMT), which was published in EMNLP 2023.
 
 ## Data Preparation
 MOSI/MOSEI/CH-SIMS Download: Please see [MMSA](https://github.com/thuiar/MMSA)
@@ -44,9 +43,9 @@ Please cite our paper if you find our work useful for your research:
 ```
 @inproceedings{zhang-etal-2024-lnln,
     title = "Towards Robust Multimodal Sentiment Analysis with Incomplete Data",
-    author = "Haoyu Zhang  and
-              Wenbin Wang  and
-              Tianshu Yu",
+    author = "Zhang, Haoyu and 
+              Wang, Wenbin and 
+              Yu, Tianshu",
     booktitle = "The Thirty-eighth Annual Conference on Neural Information Processing Systems (NeurIPS 2024)",
     year = "2024",
     note = {Accepted to NeurIPS 2024}
