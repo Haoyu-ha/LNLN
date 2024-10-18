@@ -6,7 +6,7 @@ Pytorch implementation of paper:
 > This is a reorganized code, if you find any bugs please contact me. Thanks.
 
 ## Content
-- [Acknowledgments](#Acknowledgments)
+- [Note](#Note)
 - [Data Preparation](#Data-preparation)
 - [Environment](#Environment)
 - [Training](#Training)
@@ -14,7 +14,7 @@ Pytorch implementation of paper:
 - [Citation](#Citation)
 
 ## Note
-> This work builds upon our previous works [ALMT](https://github.com/Haoyu-ha/ALMT), which was published in EMNLP 2023.
+This work builds upon our previous works [ALMT](https://github.com/Haoyu-ha/ALMT), which was published in EMNLP 2023.
 
 ## Data Preparation
 MOSI/MOSEI/CH-SIMS Download: Please see [MMSA](https://github.com/thuiar/MMSA)
