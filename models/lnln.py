@@ -5,9 +5,9 @@ from .bert import BertTextEncoder
 from einops import rearrange, repeat
 
 
-class MyMultimodal(nn.Module):
+class LNLN(nn.Module):
     def __init__(self, args):
-        super(MyMultimodal, self).__init__()
+        super(LNLN, self).__init__()
 
         self.h_hyper = nn.Parameter(torch.ones(1, args['model']['feature_extractor']['token_length'][0], 128))
         self.h_p = nn.Parameter(torch.ones(1, args['model']['feature_extractor']['token_length'][0], 128))
@@ -176,4 +176,4 @@ class MyMultimodal(nn.Module):
 
 
 def build_model(args):
-    return MyMultimodal(args)
+    return LNLN(args)
