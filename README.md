@@ -1,7 +1,7 @@
 # Towards Robust Multimodal Sentiment Analysis with Incomplete Data
 
-Pytorch implementation of paper: 
-> **[Towards Robust Multimodal Sentiment Analysis with Incomplete Data](https://arxiv.org/abs/2409.20012)**
+Pytorch implementation of the paper: 
+> **[Towards Robust Multimodal Sentiment Analysis with Incomplete Data](https://openreview.net/pdf?id=mYEjc7qGRA)**
 
 > This is a reorganized code, if you find any bugs please contact me. Thanks.
 
@@ -49,7 +49,6 @@ Please cite our paper if you find our work useful for your research:
               Wang, Wenbin and 
               Yu, Tianshu",
     booktitle = "The Thirty-eighth Annual Conference on Neural Information Processing Systems (NeurIPS 2024)",
-    year = "2024",
-    note = {Accepted to NeurIPS 2024}
+    year = "2024"
 }
 ```
