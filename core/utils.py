@@ -67,10 +67,10 @@ def get_best_results(results, best_results, epoch, model, optimizer, ckpt_root, 
                 if value > best_results[key]:
                     best_results[key] = value
 
-                if save_best_model:
-                    key_eval = key
-                    ckpt_path = os.path.join(ckpt_root, f'best_{key_eval}_{seed}.pth')
-                    save_model(ckpt_path, epoch, model, optimizer)
+                    if save_best_model:
+                        key_eval = key
+                        ckpt_path = os.path.join(ckpt_root, f'best_{key_eval}_{seed}.pth')
+                        save_model(ckpt_path, epoch, model, optimizer)
             
             else:
                 pass
